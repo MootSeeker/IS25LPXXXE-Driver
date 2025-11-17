@@ -47,6 +47,9 @@
 
 /* USER CODE BEGIN PV */
 
+// IS25LP040E Flash Handle
+sIS25LP_Handle_t flash_handle;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -92,7 +95,25 @@ int main(void)
   MX_SPI1_Init();
   /* USER CODE BEGIN 2 */
 
-  IS25LP_Init( );
+  // Configure Flash Handle
+  flash_handle.spi_handle = &hspi1;
+  flash_handle.cs_gpio.port = SPI1_NSS_GPIO_Port;
+  flash_handle.cs_gpio.pin = SPI1_NSS_Pin;
+  flash_handle.wp_gpio.port = FLASH_WP_GPIO_Port;
+  flash_handle.wp_gpio.pin = FLASH_WP_Pin;
+  flash_handle.initialized = false;
+
+  // Initialize IS25LP040E SPI Flash
+  if( IS25LP_OK == IS25LP_Init( &flash_handle ))
+  {
+      // Flash initialized successfully
+      flash_handle.initialized = true;
+  }
+  else
+  {
+      // Flash initialization failed
+      Error_Handler();
+  }
 
 
   /* USER CODE END 2 */
