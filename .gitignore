@@ -1,18 +1,32 @@
-# Prerequisites
-*.d
+# Build output directories
+Debug/
+Release/
+
+# Eclipse/STM32CubeIDE project files
+.settings/
+*.launch
 
 # Compiled Object files
-*.slo
-*.lo
 *.o
 *.obj
+*.elf
+*.bin
+*.hex
+*.map
+
+# Dependency files
+*.d
+*.su
+
+# Cyclomatic complexity files
+*.cyclo
+
+# Assembly listing files
+*.list
 
 # Precompiled Headers
 *.gch
 *.pch
-
-# Linker files
-*.ilk
 
 # Debugger Files
 *.pdb
@@ -21,10 +35,6 @@
 *.so
 *.dylib
 *.dll
-
-# Fortran module files
-*.mod
-*.smod
 
 # Compiled Static libraries
 *.lai
@@ -37,5 +47,8 @@
 *.out
 *.app
 
-# debug information files
+# Debug information files
 *.dwo
+
+# Linker files
+*.ilk
